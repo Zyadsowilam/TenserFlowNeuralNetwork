@@ -87,7 +87,7 @@ or this specific model data is going to be streamed into it in small batches of 
 An epoch is simply one stream of our entire dataset. The number of epochs we define is the amount of times our model will see the entire dataset. We use multiple epochs in hope that after seeing the same data multiple times the model will better determine how to estimate it.
 
 
-###  TensorFlow Core Learning Algorithms
+# TensorFlow Core Learning Algorithms
 # Linear Regression
 Linear regression is one of the most basic forms of machine learning and is used to predict numeric values.
 Line of best fit refers to a line through a scatter plot of data points that best expresses the relationship between those points.
@@ -191,10 +191,10 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 
 
 
-# K-means Clustering Algorithm
+### K-means Clustering Algorithm
 
 1. **Initialization:**
-   Select $$\(k\) initial cluster centroids \.$$
+   \text{ Select} $$\(k\) \text{ initial cluster centroids } .$$
 ```math
  \text{ Select}  f(\mathbf{k})  \text{  initial cluster centroids} (\{\mathbf{\mu}_1, \mathbf{\mu}_2, \ldots, \mathbf{\mu}_k\})
 ```
@@ -221,27 +221,32 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 4. **Repeat:**
    Repeat the assignment and update steps until convergence (i.e., when the assignments no longer change or the change in centroids falls below a threshold).
 
-# Objective Function
+### Objective Function
 
 K-means clustering aims to minimize the within-cluster sum of squares (WCSS), also known as inertia:
-\[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
 
-### Summary of Equations
+[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ]
+
 
 - **Distance Calculation:**
-  \[ \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 = \sum_{d=1}^{D} (x_{i,d} - \mu_{j,d})^2 \]
-  where \(D\) is the dimensionality of the data points.
+ ```math
+  [ \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 = \sum_{d=1}^{D} (x_{i,d} - \mu_{j,d})^2 ]
+```
+  where (D) is the dimensionality of the data points.
 
 - **Cluster Assignment:**
-  \[ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
-
+```math
+  [ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ]
+```
 - **Centroid Update:**
-  \[ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i \]
-
+```math
+  [ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i ]
+```
 - **Objective Function:**
-  \[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
-
+```math
+  [ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ]
+```
 By iteratively performing the assignment and update steps, K-means clustering minimizes the objective function, leading to well-defined clusters.
 
-###  Credit to TechWithTim
+# Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
