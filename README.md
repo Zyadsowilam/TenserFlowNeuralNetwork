@@ -184,7 +184,52 @@ are used to map input features into higher-dimensional spaces:
 ```math
 [ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b ] \text{ where} ( \alpha_i ) \text{  are the Lagrange multipliers.} 
 ```
+# Clustring
+K-means clustering aims to partition \(n\) data points into \(k\) clusters, where each data point belongs to the cluster with the nearest mean, serving as a prototype of the cluster.
+![image](https://github.com/Zyadsowilam/TenserFlowNeuralNetwork/assets/96208685/f73cf803-1db0-4ce4-ba5a-ba7d953ab26d)
 
+
+
+
+#K-means Clustering Algorithm
+
+1. **Initialization:**
+   Select $$\(k\) initial cluster centroids \(\{\mathbf{\mu}_1, \mathbf{\mu}_2, \ldots, \mathbf{\mu}_k\}\).$$
+
+2. **Assignment Step:**
+   Assign each data point \(\mathbf{x}_i\) to the nearest cluster centroid:
+   \[ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
+   where \(c_i\) is the index of the cluster centroid closest to \(\mathbf{x}_i\).
+
+3. **Update Step:**
+   Update the cluster centroids by calculating the mean of all data points assigned to each cluster:
+   \[ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i \]
+   where \(C_j\) is the set of data points assigned to cluster \(j\) and \(|C_j|\) is the number of points in \(C_j\).
+
+4. **Repeat:**
+   Repeat the assignment and update steps until convergence (i.e., when the assignments no longer change or the change in centroids falls below a threshold).
+
+### Objective Function
+
+K-means clustering aims to minimize the within-cluster sum of squares (WCSS), also known as inertia:
+\[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
+
+### Summary of Equations
+
+- **Distance Calculation:**
+  \[ \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 = \sum_{d=1}^{D} (x_{i,d} - \mu_{j,d})^2 \]
+  where \(D\) is the dimensionality of the data points.
+
+- **Cluster Assignment:**
+  \[ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
+
+- **Centroid Update:**
+  \[ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i \]
+
+- **Objective Function:**
+  \[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
+
+By iteratively performing the assignment and update steps, K-means clustering minimizes the objective function, leading to well-defined clusters.
 
 ###  Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
