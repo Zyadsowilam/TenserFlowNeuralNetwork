@@ -115,17 +115,20 @@ where:
 - \mathbf{b} \text{ is the bias term.}
 ```
 ```math
-- \sigma(z) \text{ is the sigmoid function: } \sigma(z) = \frac{1}{1 + e^{-z}}\.
+- \sigma(z) \text{ is the sigmoid function: } \sigma(z) = \frac{1}{1 + e^{-z}}.
 ```
 The decision boundary is given by:
-\[ \mathbf{w}^\top \mathbf{x} + b = 0 \]
-
+```math
+ \mathbf{w}^\top \mathbf{x} + b = 0
+```
 The cost function to be minimized (log loss) is:
 ```math
-\[ J(\mathbf{w}, b) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\mathbf{w}(\mathbf{x}^{(i)})) + (1 - y^{(i)}) \log(1 - h_\mathbf{w}(\mathbf{x}^{(i)})) \right] \]
+ J(\mathbf{w}, b) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\mathbf{w}(\mathbf{x}^{(i)})) + (1 - y^{(i)}) \log(1 - h_\mathbf{w}(\mathbf{x}^{(i)})) \right] 
 ```
-where \( h_\mathbf{w}(\mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b) \) and \(m\) is the number of training examples.
 
+```math
+\text{ where } ( h_\mathbf{w}(\mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b) ) \text{ and  } \mathbf{m}  \text{ where is the number of training examples.}
+```
  2. Decision Trees
 Decision trees classify instances by sorting them down the tree from the root to some leaf node, which provides the classification.
 
