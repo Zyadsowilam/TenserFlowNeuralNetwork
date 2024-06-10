@@ -182,7 +182,7 @@ For the non-linear case, kernel functions
 ```
 are used to map input features into higher-dimensional spaces:
 ```math
-[ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b ] \text{ where ( \alpha_i ) are the Lagrange multipliers. }
+[ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b ] \text{ where} ( \alpha_i ) \text{  are the Lagrange multipliers.} 
 ```
 
 
