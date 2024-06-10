@@ -106,7 +106,7 @@ P(y=1 \mid \mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b)
 ```
 where:
 ```math
-- \(\mathbf{x}\) is the input feature vector.\text{is\ \the}
+- \(\mathbf{x}\) is the input feature vector.\text{is\ the input}
 ```
 - \(\mathbf{w}\) is the weight vector.
 - \(b\) is the bias term.
