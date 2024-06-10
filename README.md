@@ -200,22 +200,28 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 ```
 2. **Assignment Step:**
    Assign each data point \(\mathbf{x}_i\) to the nearest cluster centroid:
-   $$ [ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ] $$
-
+   
 ```math
- \text{ where}  \(c_i)  \text{  is the index of the cluster centroid closest to} (\mathbf{x}_i).
+    [ c_i = \arg\min_{j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ] 
+
+```
+```math
+ \text{ where}  (c_i)  \text{  is the index of the cluster centroid closest to} (\mathbf{x}_i).
 ```
 3. **Update Step:**
    Update the cluster centroids by calculating the mean of all data points assigned to each cluster:
-   $$  [ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i ] $$
+   
+```math
+ [ \mathbf{\mu}_j = \frac{1}{|C_j|} \sum_{\mathbf{x}_i \in C_j} \mathbf{x}_i ] 
+```
 
 ```math
- \text{ where}  \(c_j)  \text{   is the set of data points assigned to cluster }  \(j) \text{and} \(|C_j|  \text{is the number of points in} \(C_j).
+ \text{ where}  (c_j)  \text{   is the set of data points assigned to cluster }  (j) \text{and} (|C_j|)  \text{is the number of points in} (C_j).
 ```
 4. **Repeat:**
    Repeat the assignment and update steps until convergence (i.e., when the assignments no longer change or the change in centroids falls below a threshold).
 
-### Objective Function
+# Objective Function
 
 K-means clustering aims to minimize the within-cluster sum of squares (WCSS), also known as inertia:
 \[ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 \]
