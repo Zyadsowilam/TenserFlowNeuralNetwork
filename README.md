@@ -194,7 +194,7 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 ### K-means Clustering Algorithm
 
 1. **Initialization:**
-   \text{ Select} $$\(k\) \text{ initial cluster centroids } .$$
+    $$ \text{ Select} \(k\) \text{ initial cluster centroids } .$$
 ```math
  \text{ Select}  f(\mathbf{k})  \text{  initial cluster centroids} (\{\mathbf{\mu}_1, \mathbf{\mu}_2, \ldots, \mathbf{\mu}_k\})
 ```
@@ -224,10 +224,10 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 ### Objective Function
 
 K-means clustering aims to minimize the within-cluster sum of squares (WCSS), also known as inertia:
-
+```math
 [ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ]
 
-
+```
 - **Distance Calculation:**
  ```math
   [ \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 = \sum_{d=1}^{D} (x_{i,d} - \mu_{j,d})^2 ]
