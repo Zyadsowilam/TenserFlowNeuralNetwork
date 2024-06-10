@@ -340,7 +340,7 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 
 ```math
 [ \pi_i = \gamma_1(i) ]
-[ a_{ij} = \frac{(\sum_{t=1}^{T-1}) \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
+[ a_{ij} = \frac{ \sum_{i=1}^{m}  \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
 [ b_j(o_k) = \frac{\sum_{t=1}^{T} \delta(O_t = o_k) \gamma_t(j)}{\sum_{t=1}^{T} \gamma_t(j)} ]
 ```
 
