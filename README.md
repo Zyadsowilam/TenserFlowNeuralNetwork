@@ -194,7 +194,7 @@ K-means clustering aims to partition \(n\) data points into \(k\) clusters, wher
 ### K-means Clustering Algorithm
 
 1. **Initialization:**
-    $$ \text{ Select} \(k\) \text{ initial cluster centroids } .$$
+    $$\(k\) \text{ initial cluster centroids  raandomise} .$$
 ```math
  \text{ Select}  f(\mathbf{k})  \text{  initial cluster centroids} (\{\mathbf{\mu}_1, \mathbf{\mu}_2, \ldots, \mathbf{\mu}_k\})
 ```
