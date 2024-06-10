@@ -294,6 +294,9 @@ Given an HMM and an observation sequence \(O\), calculate the probability of the
 Recurrence relations:
 ```math
 [ \alpha_1(j) = \pi_j b_j(O_1) ]
+```
+```math
+
 [ \alpha_{t+1}(j) = \left[ \sum_{i=1}^{N} \alpha_t(i) a_{ij} \right] b_j(O_{t+1}) ]
 ```
 The probability of the observation sequence is:
@@ -311,11 +314,15 @@ Given an HMM and an observation sequence \(O\), find the most probable state seq
 Recurrence relations:
 ```math
 [ \delta_1(j) = \pi_j b_j(O_1) ]
+```
+```math
 [ \delta_{t+1}(j) = max_{i} [\delta_t(i) a_{ij}] b_j(O_{t+1}) ]
 ```
 To retrieve the state sequence, backtracking is used:
 ```math
 [ S_T^* = \arg max_j \delta_T(j) ]
+```
+```math
 [ S_t^* = \psi_{t+1}(S_{t+1}^*) \quad \text{for} \quad t = T-1, T-2, \ldots, 1 ]
 ```
 ```math
@@ -328,19 +335,28 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 **Forward Variable (alpha) and Backward Variable (beta):**
 ```math
 [ \alpha_t(j) = P(O_1, O_2, \ldots, O_t, S_t = S_j \mid \lambda) ]
+```
+```math
 [ \beta_t(i) = P(O_{t+1}, O_{t+2}, \ldots, O_T \mid S_t = S_i, \lambda) ]
 ```
 
 **Re-estimation formulas:**
 ```math
 [ \gamma_t(i) = P(S_t = S_i \mid O, \lambda) = \frac{\alpha_t(i) \beta_t(i)}{P(O \mid \lambda)} ]
+```
+```math
 [ \xi_t(i, j) = P(S_t = S_i, S_{t+1} = S_j \mid O, \lambda) = \frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)}{P(O \mid \lambda)} ]
 ```
 **Updated parameters:**
 
 ```math
+
 [ \pi_i = \gamma_1(i) ]
-[ a_{ij} = \frac{ \sum_{i=1}^{m}  \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
+```
+```math
+[ a_{ij} = \frac{\sum_{t=1}^{T-1} \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
+```
+```math
 [ b_j(o_k) = \frac{\sum_{t=1}^{T} \delta(O_t = o_k) \gamma_t(j)}{\sum_{t=1}^{T} \gamma_t(j)} ]
 ```
 
