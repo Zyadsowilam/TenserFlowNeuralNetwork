@@ -311,11 +311,11 @@ Given an HMM and an observation sequence \(O\), find the most probable state seq
 Recurrence relations:
 ```math
 [ \delta_1(j) = \pi_j b_j(O_1) ]
-[ \delta_{t+1}(j) = \max_{i} [\delta_t(i) a_{ij}] b_j(O_{t+1}) ]
+[ \delta_{t+1}(j) = max_{i} [\delta_t(i) a_{ij}] b_j(O_{t+1}) ]
 ```
 To retrieve the state sequence, backtracking is used:
 ```math
-[ S_T^* = \arg\max_j \delta_T(j) ]
+[ S_T^* = \arg max_j \delta_T(j) ]
 [ S_t^* = \psi_{t+1}(S_{t+1}^*) \quad \text{for} \quad t = T-1, T-2, \ldots, 1 ]
 ```
 ```math
@@ -337,14 +337,15 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 [ \xi_t(i, j) = P(S_t = S_i, S_{t+1} = S_j \mid O, \lambda) = \frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)}{P(O \mid \lambda)} ]
 ```
 **Updated parameters:**
+
 ```math
 [ \pi_i = \gamma_1(i) ]
-[ a_{ij} = \frac{\sum_{t=1}^{T-1} \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
+[ a_{ij} = \frac{(\sum_{t=1}^{T-1}) \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
 [ b_j(o_k) = \frac{\sum_{t=1}^{T} \delta(O_t = o_k) \gamma_t(j)}{\sum_{t=1}^{T} \gamma_t(j)} ]
 ```
 
 ```math
-\text{Here} (\delta(\cdot)\)  \text{ is an indicator function that is 1 if} (O_t = o_k) \text{ and 0 otherwise.} 
+\text{Here} (\delta(\cdot))  \text{ is an indicator function that is 1 if} (O_t = o_k) \text{ and 0 otherwise.} 
 ```
 
 # Credit to TechWithTim
