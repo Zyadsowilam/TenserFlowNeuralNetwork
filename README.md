@@ -247,6 +247,105 @@ K-means clustering aims to minimize the within-cluster sum of squares (WCSS), al
   [ J = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \mathbf{\mu}_j\|^2 ]
 ```
 By iteratively performing the assignment and update steps, K-means clustering minimizes the objective function, leading to well-defined clusters.
+### Hidden Markov Models
+A finite set of states, each of which is associated with a (generally multidimensional) probability distribution .
+![image](https://github.com/Zyadsowilam/TenserFlowNeuralNetwork/assets/96208685/980243b6-1925-48d7-8a7b-ddbb5367f2e6)
+
+### Key Components of HMMs
+
+1. **States (\(S\)):**
+   A set of (N) hidden states
+   ```math
+   (S = \{S_1, S_2, \ldots, S_N\})
+   ```
+
+3. **Observations (O):**
+
+```math
+ \text{ A sequence of }  (T)  \text{   observations }  (O = \{O_1, O_2, \ldots, O_T\}) \text{and} (|C_j|)  \text{where each observation comes from a finite set of symbols.}
+```
+4. **Transition Probabilities (\(A\)):**
+   The probability of transitioning from one state to another:
+```math
+   [ A = \{a_{ij}\} \quad \text{where} \quad a_{ij} = P(S_{t+1} = S_j \mid S_t = S_i) ]
+```
+6. **Emission Probabilities (B):**
+The probability of observing a symbol given a state:
+```math
+   
+   [ B = \{b_j(o_t)\} \quad \text{where} \quad b_j(o_t) = P(O_t = o \mid S_t = S_j) ]
+```
+8. **Initial State Probabilities (\(\pi\)):**
+The probability of starting in a particular state:
+```math
+   
+   [ \pi = \{\pi_i\} \quad \text{where} \quad \pi_i = P(S_1 = S_i) ]
+```
+### Fundamental Problems in HMMs
+
+ 1. Evaluation (Forward Algorithm)
+
+Given an HMM and an observation sequence \(O\), calculate the probability of the observation sequence:
+
+**Forward Probability (alpha):**
+```math
+[ \alpha_t(j) = P(O_1, O_2, \ldots, O_t, S_t = S_j \mid \lambda) ]
+```
+Recurrence relations:
+```math
+[ \alpha_1(j) = \pi_j b_j(O_1) ]
+[ \alpha_{t+1}(j) = \left[ \sum_{i=1}^{N} \alpha_t(i) a_{ij} \right] b_j(O_{t+1}) ]
+```
+The probability of the observation sequence is:
+```math
+[ P(O \mid \lambda) = \sum_{j=1}^{N} \alpha_T(j) ]
+```
+ 2. Decoding (Viterbi Algorithm)
+
+Given an HMM and an observation sequence \(O\), find the most probable state sequence:
+
+**Viterbi Variable (\(\delta\)):**
+```math
+[ \delta_t(j) = \max_{S_1, S_2, \ldots, S_{t-1}} P(S_1, S_2, \ldots, S_t = S_j, O_1, O_2, \ldots, O_t \mid \lambda) ]
+```
+Recurrence relations:
+```math
+[ \delta_1(j) = \pi_j b_j(O_1) ]
+[ \delta_{t+1}(j) = \max_{i} [\delta_t(i) a_{ij}] b_j(O_{t+1}) ]
+```
+To retrieve the state sequence, backtracking is used:
+```math
+[ S_T^* = \arg\max_j \delta_T(j) ]
+[ S_t^* = \psi_{t+1}(S_{t+1}^*) \quad \text{for} \quad t = T-1, T-2, \ldots, 1 ]
+```
+```math
+\text{where} (\psi) \text{ stores the state with the highest probability at each step.}
+```
+3. Learning (Baum-Welch Algorithm / Expectation-Maximization)
+
+Given an HMM and an observation sequence (O), adjust the model parameters to maximize the probability of the observation sequence:
+
+**Forward Variable (alpha) and Backward Variable (beta):**
+```math
+[ \alpha_t(j) = P(O_1, O_2, \ldots, O_t, S_t = S_j \mid \lambda) ]
+[ \beta_t(i) = P(O_{t+1}, O_{t+2}, \ldots, O_T \mid S_t = S_i, \lambda) ]
+```
+
+**Re-estimation formulas:**
+```math
+[ \gamma_t(i) = P(S_t = S_i \mid O, \lambda) = \frac{\alpha_t(i) \beta_t(i)}{P(O \mid \lambda)} ]
+[ \xi_t(i, j) = P(S_t = S_i, S_{t+1} = S_j \mid O, \lambda) = \frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)}{P(O \mid \lambda)} ]
+```
+**Updated parameters:**
+```math
+[ \pi_i = \gamma_1(i) ]
+[ a_{ij} = \frac{\sum_{t=1}^{T-1} \xi_t(i, j)}{\sum_{t=1}^{T-1} \gamma_t(i)} ]
+[ b_j(o_k) = \frac{\sum_{t=1}^{T} \delta(O_t = o_k) \gamma_t(j)}{\sum_{t=1}^{T} \gamma_t(j)} ]
+```
+
+```math
+\text{Here} (\delta(\cdot)\)  \text{ is an indicator function that is 1 if} (O_t = o_k) \text{ and 0 otherwise.} 
+```
 
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
