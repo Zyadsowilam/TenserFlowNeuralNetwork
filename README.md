@@ -106,11 +106,16 @@ P(y=1 \mid \mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b)
 ```
 where:
 ```math
-- \(\mathbf{x}\) is the input feature vector.\text{is the input}
+- \mathbf{x}  \text{ is the input feature vector.}
 ```
-- \(\mathbf{w}\) is the weight vector.
-- \(b\) is the bias term.
-- \(\sigma(z)\) is the sigmoid function: \(\sigma(z) = \frac{1}{1 + e^{-z}}\).
+```math
+- \mathbf{w} \text{ is the weight vector.}
+```
+```math
+- \mathbf{b} \text{ is the bias term.}
+```
+```math
+- \sigma(z) \text{ is the sigmoid function: } \sigma(z) = \frac{1}{1 + e^{-z}}\.
 ```
 The decision boundary is given by:
 \[ \mathbf{w}^\top \mathbf{x} + b = 0 \]
