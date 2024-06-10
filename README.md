@@ -137,38 +137,54 @@ The process involves splitting the dataset into subsets based on the feature tha
 **Impurity Measures:**
 - **Gini Index:**
 - ```math
-  \[ Gini(D) = 1 - \sum_{i=1}^{c} p_i^2 \]
+  [ Gini(D) = 1 - \sum_{i=1}^{c} p_i^2 ]
   ```
-  where \( p_i \) is the probability of an element being classified for a particular class.
 
+```math
+\text{ where } \mathbf{p_i}   \text{ is the probability of an element being classified for a particular class.  }
+```
 - **Entropy:**
  ```math
-  \[ Entropy(D) = - \sum_{i=1}^{c} p_i \log_2(p_i) \]
+  [ Entropy(D) = - \sum_{i=1}^{c} p_i \log_2(p_i) ]
 ```
 The best split is chosen based on the highest information gain:
-\[ \text{Information Gain} = Entropy(D) - \sum_{k=1}^{K} \frac{|D_k|}{|D|} Entropy(D_k) \]
-where \( D_k \) is the subset created from the split.
 
+ ```math
+  [Information Gain = Entropy(D) - \sum_{k=1}^{K} \frac{|D_k|}{|D|} Entropy(D_k) ]
+```
+```math
+\text{ where }   \mathbf{D_k}   \text{ is the subset created from the split.  }
+```
  3. Support Vector Machines (SVM)
 SVMs find the hyperplane that best separates the classes in the feature space.
 
 
 For a binary classification:
 ```math
-\[ f(\mathbf{x}) = \mathbf{w}^\top \mathbf{x} + b \]
+[ f(\mathbf{x}) = \mathbf{w}^\top \mathbf{x} + b ]
 ```
 The goal is to maximize the margin, which is the distance between the hyperplane and the closest points from either class (support vectors).
 
 The optimization problem is:
-\[ \min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \]
+```math
+[ \min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 ]
+```
+
 subject to:
-\[ y^{(i)} (\mathbf{w}^\top \mathbf{x}^{(i)} + b) \geq 1, \; \forall i \]
+```math
+[ y^{(i)} (\mathbf{w}^\top \mathbf{x}^{(i)} + b) \geq 1, \; \forall i ]
+```
+
 
 For the non-linear case, kernel functions
+```math
+( K(\mathbf{x}_i, \mathbf{x}_j) )  
+```
+are used to map input features into higher-dimensional spaces:
+```math
+[ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b ] \text{ where ( \alpha_i ) are the Lagrange multipliers. }
+```
 
-\( K(\mathbf{x}_i, \mathbf{x}_j) \) are used to map input features into higher-dimensional spaces:
-\[ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b \]
-where \( \alpha_i \) are the Lagrange multipliers.
 
 ###  Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
