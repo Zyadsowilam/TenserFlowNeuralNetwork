@@ -95,4 +95,70 @@ Line of best fit refers to a line through a scatter plot of data points that bes
 y=mx+b
 ```
 ![image](https://github.com/Zyadsowilam/TenserFlowNeuralNetwork/assets/96208685/57480373-1ded-47a3-9671-81728d532833)
+# Classification
+classification is used to seperate data points into classes of different labels.Arranging or sorting objects into groups on the basis of a common property that they have.
 
+1. Logistic Regression
+Logistic regression is used for binary classification problems.
+
+```math
+\[ P(y=1 \mid \mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b) \]
+```
+where:
+- \(\mathbf{x}\) is the input feature vector.
+- \(\mathbf{w}\) is the weight vector.
+- \(b\) is the bias term.
+- \(\sigma(z)\) is the sigmoid function: \(\sigma(z) = \frac{1}{1 + e^{-z}}\).
+
+The decision boundary is given by:
+\[ \mathbf{w}^\top \mathbf{x} + b = 0 \]
+
+The cost function to be minimized (log loss) is:
+```math
+\[ J(\mathbf{w}, b) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\mathbf{w}(\mathbf{x}^{(i)})) + (1 - y^{(i)}) \log(1 - h_\mathbf{w}(\mathbf{x}^{(i)})) \right] \]
+```
+where \( h_\mathbf{w}(\mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b) \) and \(m\) is the number of training examples.
+
+ 2. Decision Trees
+Decision trees classify instances by sorting them down the tree from the root to some leaf node, which provides the classification.
+
+The process involves splitting the dataset into subsets based on the feature that results in the most homogeneous subsets (purest).
+
+**Impurity Measures:**
+- **Gini Index:**
+- ```math
+  \[ Gini(D) = 1 - \sum_{i=1}^{c} p_i^2 \]
+  ```
+  where \( p_i \) is the probability of an element being classified for a particular class.
+
+- **Entropy:**
+ ```math
+  \[ Entropy(D) = - \sum_{i=1}^{c} p_i \log_2(p_i) \]
+```
+The best split is chosen based on the highest information gain:
+\[ \text{Information Gain} = Entropy(D) - \sum_{k=1}^{K} \frac{|D_k|}{|D|} Entropy(D_k) \]
+where \( D_k \) is the subset created from the split.
+
+ 3. Support Vector Machines (SVM)
+SVMs find the hyperplane that best separates the classes in the feature space.
+
+
+For a binary classification:
+```math
+\[ f(\mathbf{x}) = \mathbf{w}^\top \mathbf{x} + b \]
+```
+The goal is to maximize the margin, which is the distance between the hyperplane and the closest points from either class (support vectors).
+
+The optimization problem is:
+\[ \min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \]
+subject to:
+\[ y^{(i)} (\mathbf{w}^\top \mathbf{x}^{(i)} + b) \geq 1, \; \forall i \]
+
+For the non-linear case, kernel functions
+
+\( K(\mathbf{x}_i, \mathbf{x}_j) \) are used to map input features into higher-dimensional spaces:
+\[ f(\mathbf{x}) = \sum_{i=1}^{m} \alpha_i y_i K(\mathbf{x}_i, \mathbf{x}) + b \]
+where \( \alpha_i \) are the Lagrange multipliers.
+
+###  Credit to TechWithTim
+https://www.youtube.com/watch?v=tPYj3fFJGjk
