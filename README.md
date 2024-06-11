@@ -363,6 +363,8 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 ```math
 \text{Here} (\delta(\cdot))  \text{ is an indicator function that is 1 if} (O_t = o_k) \text{ and 0 otherwise.} 
 ```
+# Neural Network
+Please check the scratch NN for Mathmatics and concept of Algo
 
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
