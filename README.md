@@ -365,6 +365,37 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 ```
 # Neural Network
 Please check the scratch NN for Mathmatics and concept of Algo
+# Deep Computer Vision
+Each convolutional neural network is made up of one or many convolutional layers. These layers are different than the dense layers we have seen previously. Their goal is to find patterns from within images that can be used to classify the image or parts of it. 
+```math
 
+[ (I * K)(i, j) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i+m, j+n) \cdot K(m, n) ]
+```
+Here is a breakdown of the components in the equation:
+
+- (I) is the input image or feature map.
+- (K) is the kernel or filter.
+- (i) and (j) are the coordinates of the output pixel.
+- (m) and (n) are the coordinates within the kernel.
+- (M) and (N) are the dimensions of the kernel.
+```math
+\text{The result of the convolution operation, } ( (I * K)(i, j) ), \text{ is a new feature map where each pixel is computed by summing the element-wise product of the kernel and the corresponding patch of the input image.}
+```
+In practice, a CNN convolutional layer may also include additional steps such as:
+
+1. **Bias Addition**: A bias term \( b \) can be added to the result of the convolution:
+```math
+   [ (I * K)(i, j) = \left(\sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i+m, j+n) \cdot K(m, n)\right) + b ]
+```
+2. **Activation Function**: An activation function (such as ReLU) can be applied to introduce non-linearity:
+```math
+   [ A(i, j) = f((I * K)(i, j)) ]
+```
+   where ( f ) is the activation function.
+
+Putting it all together, the output of a convolutional layer at position \( (i, j) \) can be expressed as:
+```math
+[ A(i, j) = f\left(\left(\sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i+m, j+n) \cdot K(m, n)\right) + b\right) ]
+```
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
