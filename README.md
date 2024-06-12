@@ -365,6 +365,7 @@ Given an HMM and an observation sequence (O), adjust the model parameters to max
 ```
 # Neural Network
 Please check the scratch NN for Mathmatics and concept of Algo
+https://github.com/Zyadsowilam/ScratchNeuralNetwork
 # Deep Computer Vision
 Each convolutional neural network is made up of one or many convolutional layers. These layers are different than the dense layers we have seen previously. Their goal is to find patterns from within images that can be used to classify the image or parts of it. 
 ```math
