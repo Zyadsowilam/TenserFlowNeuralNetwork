@@ -400,6 +400,139 @@ Putting it all together, the output of a convolutional layer at position \( (i, 
 ```
 # Recurrent Neural Networks (RNN's)
 
+### Simple RNN Equations
 ![alt text](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
+```math
+\text{In a simple RNN, the hidden state } (h_t)  \text{ at time step } (t) \text{ is computed using the current input }  x_t \text{ and the hidden state from the previous time step }  h_{t-1} :
+```
+
+
+1. **Hidden State Update:**
+```math
+[
+   h_t = \tanh(W_h x_t + U_h h_{t-1} + b_h)
+   ]
+```
+  
+
+   where:
+   ```math
+
+ - ( W_h ) \text{ is the weight matrix for the input }  ( x_t ).
+```
+   ```math
+
+ - ( U_h ) \text{ is the weight matrix for the previous hidden state }  (  h_{t-1} ).
+```
+   ```math
+
+ - ( b_h ) \text{ is the bias term. } 
+```
+   ```math
+
+ - ( \tanh ) \text{ is the hyperbolic tangent activation function. }  
+```
+
+
+2. **Output:**
+
+```math
+
+ y_t = W_y h_t + b_y
+```
+
+   where:
+  ```math
+
+ - ( W_y ) \text{ is the weight matrix for the hidden state }  ( h_t ) \text{  to the output } .
+```
+   ```math
+
+ - ( b_y ) \text{ is the bias term for the output. } 
+```
+
+
+### LSTM Equations
+
+LSTM networks have a more complex structure with a memory cell ( c_t ) that helps in retaining long-term dependencies. They include gates to control the flow of information.
+![image](https://github.com/Zyadsowilam/TenserFlowNeuralNetwork/assets/96208685/b76db2b5-4cf8-43bb-9c10-e7ef7a64b325)
+1. **Forget Gate:**
+```math
+
+  [
+   f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)
+   ]
+```
+ ```math
+\text{where} (\sigma )  \text{ is the sigmoid function.} 
+```
+
+2. **Input Gate:**
+ ```math
+   [
+   i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)
+   ]
+```
+
+
+3. **Candidate Memory Cell:**
+ ```math
+  [
+   \tilde{c}_t = \tanh(W_c x_t + U_c h_{t-1} + b_c)
+   ]
+```
+ 
+
+4. **Memory Cell Update:**
+ ```math
+    [
+   c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t
+   ]
+```
+  ```math
+\text{where} (\odot )  \text{ denotes element-wise multiplication.} 
+```
+
+5. **Output Gate:**
+ ```math
+   [
+   o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)
+   ]
+
+```
+  
+6. **Hidden State Update:**
+ ```math
+   [
+   h_t = o_t \odot \tanh(c_t)
+   ]
+```
+
+
+### Summary of Parameters
+  ```math
+- ( W ) \text{matrices are weights for the current input} (x_t ) 
+```
+ ```math
+- ( U ) \text{ matrices are weights for the previous hidden state } ( h_{t-1} ).
+```
+  ```math
+- ( b ) \text{vectors are bias terms.} 
+```
+  ```math
+- ( \sigma ) \text{is the sigmoid activation function.} 
+```
+  ```math
+- ( \tanh )   \text{ is the hyperbolic tangent activation function.} 
+```
+  ```math
+- ( \odot ) \text{denotes element-wise multiplication.} 
+```
+
+### Differences
+
+- **Simple RNNs** use a single equation to update the hidden state, making them simpler but prone to vanishing gradient problems.
+- **LSTMs** introduce a memory cell and gates to control information flow, helping to mitigate the vanishing gradient problem and better capture long-term dependencies.
+
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
