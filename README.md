@@ -398,5 +398,8 @@ Putting it all together, the output of a convolutional layer at position \( (i, 
 ```math
 [ A(i, j) = f\left(\left(\sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i+m, j+n) \cdot K(m, n)\right) + b\right) ]
 ```
+# Recurrent Neural Networks (RNN's)
+
+![alt text](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
