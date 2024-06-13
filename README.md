@@ -533,6 +533,54 @@ LSTM networks have a more complex structure with a memory cell ( c_t ) that help
 
 - **Simple RNNs** use a single equation to update the hidden state, making them simpler but prone to vanishing gradient problems.
 - **LSTMs** introduce a memory cell and gates to control information flow, helping to mitigate the vanishing gradient problem and better capture long-term dependencies.
+# REINFORCMENT
+  ```math
+[ V(s) = \mathbb{E}[R_{t+1} + \gamma V(s_{t+1}) \mid s_t = s] ]
+```
+- \( \)  \( s \) to \( s_{t+1} \),
+where:
 
+```math
+- (  V(s) ) \text{ is the value of state }   ( s )
+```
+```math
+- (  \mathbb{E} ) \text{ denotes the expected value,  }  
+```
+```math
+- (   R_{t+1} ) \text{ is the reward received after transitioning from state  }   ( s  ) \text{ to } ( s_{t+1} ),
+```
+```math
+- (  \gamma ) \text{ is the discount factor, and }   
+```
+```math
+- (   s_{t+1}  ) \text{ is the next state. }   
+```
+
+### Q-Learning 
+The Q-learning update rule for the Q-value ( Q(s, a) ) is given by:
+  ```math
+[ Q(s, a) \leftarrow Q(s, a) + \alpha \left[ R_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s, a) \right] ]
+```
+
+where:
+
+ ```math
+- (   Q(s, a)  ) \text{in state }   ( s )
+```
+```math
+- (   \alpha  ) \text{ is the learning rate, }   
+```
+```math
+- (   R_{t+1}  ) \text{ is the reward received after taking action  }   ( a ) \text{ in state  } ( s) 
+```
+```math
+- (  \gamma ) \text{ is the discount factor, }   
+```
+```math
+- (   s_{t+1}  ) \text{  is the next state, and }   
+```
+```math
+- (  \max_{a'} Q(s_{t+1}, a')    ) \text{ is the maximum Q-value for the next state }   ( s_{t+1} ) \text{  over all possible actions }  ( a' ).
+```
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
