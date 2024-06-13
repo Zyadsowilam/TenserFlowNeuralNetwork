@@ -584,10 +584,15 @@ where:
 ```
 #### Updating Q-Values
 The formula for updating the Q-Table after each action is as follows:
-> $ Q[state, action] = Q[state, action] + \alpha * (reward + \gamma * max(Q[newState, :]) - Q[state, action]) $
+```math
+ Q[state, action] = Q[state, action] + \alpha * (reward + \gamma * max(Q[newState, :]) - Q[state, action])
+```
+```math
+- (  \alpha    ) \text{ stands for the **Learning Rate** }   
+```
+```math
+- (  \gamma ) \text{  stands for the **Discount Factor** }  
+```
 
-- $\alpha$ stands for the **Learning Rate**
-
-- $\gamma$ stands for the **Discount Factor**
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
