@@ -582,5 +582,12 @@ where:
 ```math
 - (  \max_{a'} Q(s_{t+1}, a')    ) \text{ is the maximum Q-value for the next state }   ( s_{t+1} ) \text{  over all possible actions }  ( a' ).
 ```
+#### Updating Q-Values
+The formula for updating the Q-Table after each action is as follows:
+> $ Q[state, action] = Q[state, action] + \alpha * (reward + \gamma * max(Q[newState, :]) - Q[state, action]) $
+
+- $\alpha$ stands for the **Learning Rate**
+
+- $\gamma$ stands for the **Discount Factor**
 # Credit to TechWithTim
 https://www.youtube.com/watch?v=tPYj3fFJGjk
